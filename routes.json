@@ -23,7 +23,7 @@
         "premiumCpu": null,
         "transparentCache": null
       },
-      "note": "Ubicloud's own hosted runner, started through the Ubicloud GitHub App. Disabled until that App is installed on the organization. Record the premium CPU and transparent cache settings here before enabling it; null means not recorded."
+      "note": "Disabled in goums/benchmark. Upstream and other forks' native access and historical runs do not establish access or measurements for this repository. A separate reviewed allocation is required before enabling this route."
     },
     {
       "id": "depot-ubuntu-2vcpu",
@@ -32,9 +32,9 @@
       "vcpu": 2,
       "memoryGb": 8,
       "image": "ubuntu-24.04",
-      "enabled": true,
+      "enabled": false,
       "hostedRunner": true,
-      "note": "Bounded external pilot only: native Depot App installation 179933674 exists on ci-router; prior same-repository run 42509881072 succeeded with this label. Select this route explicitly with one workload and one repetition. Current repository access/account admission is exercised by the pilot; no plan purchase or claim of hard billing cutoff. Retain a $1 operational allocation within the $2 external/$10 combined daily budget until terminal reconciliation. Other Depot sizes remain disabled."
+      "note": "Disabled in goums/benchmark. Upstream and other forks' native access and historical runs do not establish access or measurements for this repository. A separate reviewed allocation is required before enabling this route."
     },
     {
       "id": "depot-ubuntu-4vcpu",
@@ -45,7 +45,7 @@
       "image": "ubuntu-24.04",
       "enabled": false,
       "hostedRunner": true,
-      "note": "Collection disabled pending repository access, publication terms and bounded spend verification. Depot's own hosted runner (label depot-ubuntu-24.04-4: 4 vCPU, 16 GB, x86 on AWS EC2, $0.012 per minute per depot.dev/docs/github-actions/runner-types, read 2026-11-08), the like-for-like match for github-hosted-4vcpu. Same Depot App and terms as depot-ubuntu-2vcpu."
+      "note": "Disabled in goums/benchmark. Upstream and other forks' native access and historical runs do not establish access or measurements for this repository. A separate reviewed allocation is required before enabling this route."
     },
     {
       "id": "boat-4vcpu",
@@ -56,7 +56,7 @@
       "image": "ubuntu",
       "enabled": false,
       "hostedRunner": true,
-      "note": "Collection disabled pending repository access, publication terms and bounded spend verification. Label boat (Boat's default size: 4 vCPU, 8 GB, 51 GB disk, $0.036 per hour). The CI page also says a job gets 4 GB from Boat plus swap, so the memory limit is unclear. Boat's own CI runner (docs.boat.dev/ci and docs.boat.dev/pricing.md, read 2026-11-08): a fresh sandbox per job on shared vCPUs, no promised CPU model, billed per second, CI needs Boat's $20/month plan, extra starts above the plan's included ones cost $0.03 to $0.07. The docs do not name the Ubuntu release, so the image is what the job reports. Boat refuses jobs from public repositories until the account owner runs `boat ci public <account> on`. Boat's terms (boat.dev/terms, effective 2026-10-12) have no benchmark, comparison or confidentiality clause about Boat; TOS-10 forbids probing or evading usage limits and metering, which this suite does not do."
+      "note": "Disabled in goums/benchmark. Upstream and other forks' native access and historical runs do not establish access or measurements for this repository. A separate reviewed allocation is required before enabling this route."
     },
     {
       "id": "boat-2vcpu",
@@ -65,9 +65,9 @@
       "vcpu": 2,
       "memoryGb": 4,
       "image": "ubuntu",
-      "enabled": true,
+      "enabled": false,
       "hostedRunner": true,
-      "note": "Bounded external native Boat pilot only. Boat CI App179935506 is installed and unsuspended on ci-router; repository selection, linked account, existing paid-plan eligibility and public-job opt-in are diagnosed by ONE normal native job, not inferred from installation. Select one Node workload/repetition,15-minute timeout; retain $1 operational allocation within remaining $2external/$10combined budget. No subscription purchase, retry or paid recurrence. Native App owns lifecycle; do not assert a hard billing cutoff. Label boat-small:2vCPU/4GB,$0.018/hour per docs.boat.dev/ci.md and pricing.md checked2026-11-10; extra start may add up to$0.07. Other Boat sizes remain disabled."
+      "note": "Disabled in goums/benchmark. Upstream and other forks' native access and historical runs do not establish access or measurements for this repository. A separate reviewed allocation is required before enabling this route."
     },
     {
       "id": "tenki-hosted-4vcpu",
@@ -76,14 +76,14 @@
       "vcpu": 4,
       "memoryGb": 8,
       "image": "ubuntu-24.04",
-      "enabled": false,
+      "enabled": true,
       "hostedRunner": true,
       "archiveLogs": false,
       "settings": {
         "transparentCache": null,
         "stickyDisk": null
       },
-      "note": "Prepared from tenki.cloud/docs/runners/quickstart and tenki.cloud/docs/runners/x64-runners.md, checked 2026-11-09. The quickstart gives this 4-vCPU/8-GB label; Linux runners default to Ubuntu 24.04. Disabled until the actual repository has runner access, account size eligibility and publication terms are verified, cache/sticky-disk settings recorded, and collection spend is bounded. Sandbox API access is not hosted-runner access. The actual image and resources must be checked against the job fingerprint. Tenki Terms of Service section 4.2(iv) and Acceptable Use Policy section 3 (checked 2026-11-09) require prior written consent covering the intended benchmark and publication; verify that consent before execution. Account setup and runner access are not publication consent."
+      "note": "Prepared native external pilot for public goums/benchmark only. Owner confirms Tenki is installed on this repository; installation does not prove hosted-runner admission or size eligibility. Sandbox API access is not hosted-runner access. Select one explicit workload and one repetition under standing owner authority only after confirmed external budget headroom. No dispatch while current holds exhaust the allocation. Label tenki-standard-medium-4c-8g, 4 vCPU/8 GB, Ubuntu 24.04 come from the reviewed upstream runner documentation. transparentCache and stickyDisk remain null (unknown); actual CPU, OS and resources require the job fingerprint before interpreting results. Charges and settings are unknown. No plan purchase, account-setting change, retry, paid schedule or hard billing cutoff is established here."
     }
   ]
 }

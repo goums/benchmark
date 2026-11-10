@@ -3,8 +3,9 @@
 Suite version: see `suite.json`. Scores are only compared within one suite
 version. A change to any pin, toolchain or script makes a new one.
 
-Status: GitHub baseline collection plus a bounded native Depot 2-vCPU pilot.
-Two workloads are available; each paid pilot dispatch selects exactly one.
+Status: fork preparation for one bounded native Tenki 4-vCPU/8-GB sample alongside the
+GitHub-hosted 4-vCPU/16-GB baseline. No fork measurement exists yet. Two workloads are
+available; a paid dispatch selects exactly one.
 
 ## Why this exists
 
@@ -141,29 +142,19 @@ A route is one way of getting a runner:
   are compared at 4 vCPUs. Smaller and larger sizes are published as raw numbers
   and are not scored.
 - **Providers with their own GitHub Actions integration**, using their own
-  labels. This measures what a customer gets from that provider directly. The
-  bounded Depot and Boat small pilots are the currently enabled native integrations. `ubicloud-hosted-4vcpu` (label `ubicloud-standard-4-ubuntu-2404`) is
-  declared in `routes.json` with `"enabled": false`: it is Ubicloud's own hosted
-  runner, and it stays out of the dispatch matrix until the Ubicloud GitHub App
-  is installed on the organization. Its `settings` object (`premiumCpu`,
-  `transparentCache`) is where those two Ubicloud options are recorded before
-  the route is enabled; `null` means not recorded. Both may change speed, so a
-  result must be read together with them.
-  `depot-ubuntu-2vcpu` (label `depot-ubuntu-24.04`, 2 vCPU, 8 GB) is Depot's
-  own hosted runner. Its App was installed on 2026-11-08; the 2026-11-10
-  pilot enables only this size with one explicit workload and repetition. At 2 vCPUs it is published as raw numbers and not scored, and its
-  job logs are not archived (`archiveLogs` is only set on the GitHub-hosted
-  baseline). A dispatch selects it with `route=depot-ubuntu-2vcpu` and an explicit `workload`.
-  `boat-4vcpu` (label `boat`, 4 vCPU, 8 GB) and `boat-2vcpu` (label
-  `boat-small`, 2 vCPU, 4 GB) are prepared Boat CI runner routes. The Boat
-  GitHub App was installed on 2026-11-08. Only `boat-2vcpu` is enabled for one
-  explicit Node workload/repetition; `boat-4vcpu` remains disabled. The normal
-  job diagnoses current repository/account/plan/public-job admission; App
-  installation alone does not prove access. No subscription purchase is authorized. Boat runs each job in a fresh sandbox
-  on shared vCPUs and does not promise a CPU model, so the CPU model each job
-  reports matters more than usual when reading its numbers. `boat-4vcpu` is at
-  the reference size; `boat-2vcpu` is published as raw numbers and not scored.
-  Neither archives job logs.
+  labels. In public `goums/benchmark`, only `tenki-hosted-4vcpu` is enabled:
+  `tenki-standard-medium-4c-8g`, 4 vCPU / 8 GB, Ubuntu 24.04. This has half
+  the memory of the public GitHub 4-vCPU baseline. The actual CPU, OS and
+  resources require the job fingerprint before interpreting a result.
+  The owner confirms the Tenki installation on this repository. A normal job
+  must still establish hosted-runner admission and size eligibility; neither a
+  PAT installations-list 403 nor sandbox API access establishes that access.
+  `transparentCache` and `stickyDisk` remain `null` (unknown). Do not force
+  account settings to fill them in. Charges remain unknown; a timeout is not
+  a hard billing cutoff. No subscription or plan purchase is authorized.
+  All Depot, Boat and Ubicloud routes are disabled in this fork. Their upstream
+  or other-fork access and runs are not `goums/benchmark` measurements. Tenki
+  job logs are not archived.
 - **Router routes.** These come later. A router route can only be started from a
   manual or scheduled run on the default branch: the router refuses to place
   jobs from anything else, including a pull request from a fork. Not in stage 1.
@@ -171,8 +162,10 @@ A route is one way of getting a runner:
 ## Workloads
 
 Each workload has a `setup.sh` (toolchain and dependencies) and a `work.sh` (the
-part that is compared). No caches, a fresh VM every time, toolchains pinned to
-exact versions.
+part that is compared). Workload scripts configure no caches and pin toolchains
+to exact versions. Native provider transparent caching and sticky-disk behavior
+remain unknown until recorded; do not assume a cold disk or fresh VM from the
+absence of workflow caches.
 
 | Workload | Measures | Pin | Stage |
 | --- | --- | --- | --- |
@@ -247,6 +240,10 @@ run under. Results are scored per version and never mixed.
 
 ## Baselines
 
+The baselines below describe the upstream `ci-router/benchmark` program and its
+historical measurements. This fork has no measurements yet, so none of these
+baselines is a fork result.
+
 - **Public, measured:** the 4-vCPU standard runner. Free, so it has a time but no
   meaningful cost.
 - **Private, measured:** the 2-vCPU standard runner most paying customers use,
@@ -303,13 +300,14 @@ cell whose coefficient of variation is above 15% is flagged as unstable.
 
 - Only `workflow_dispatch` and the schedule start the workflow. It
   has no `pull_request` trigger, so a fork's pull request cannot add its own run.
-- The default branch is protected: no direct pushes, changes need a review.
+- This candidate uses an ordinary pull request and independent source review;
+  repository branch-protection settings are not established by this document.
 - Benchmark jobs have no secrets and `permissions: {}`. Only the GitHub-hosted
   `collect` job (and the manual `archive` workflow, which checks the run it is
   given) can write, only on the default branch, and only to the `results`
   branch.
 - Actions are pinned by full commit SHA and change only in a reviewed suite
-  version. No caches, no third-party actions.
+  version. No workflow caches, no third-party actions.
 - Scripts avoid printing the environment or the process list. Workloads run
   third-party test suites that we do not control, so this alone is not a
   guarantee that nothing sensitive reaches a public log; that is why the jobs
@@ -335,21 +333,26 @@ cell whose coefficient of variation is above 15% is flagged as unstable.
 
 ## Stages
 
-1. **Baseline:** GitHub-hosted measurements established the two-workload harness
-   and recorded repeated-run variation.
-2. **Native provider pilots (current):** Depot and Boat 2-vCPU pilots are enabled
-   for explicit one-workload, one-repeat jobs. Other native routes remain disabled.
+1. **Upstream baseline:** historical `ci-router/benchmark` GitHub-hosted
+   measurements established the harness and repeated-run variation. They are
+   not `goums/benchmark` measurements.
+2. **Native provider pilot (current fork preparation):** one Tenki 4-vCPU
+   route is enabled for an explicit one-workload, one-repeat job once external
+   headroom is confirmed under standing owner authorization. Depot, Boat,
+   Ubicloud and other native routes remain disabled in this fork. No fork measurement exists yet.
 3. Router routes, once the router's checks for these runs are in place.
 4. The full suite, a schedule and a results page, after each provider's terms
    are checked for restrictions on publishing benchmarks.
 
 ## Recurring samples
 
-The free public GitHub baseline is sampled every six hours, at 00:23, 06:23,
-12:23 and 18:23 UTC. GitHub may delay or skip scheduled workflows, and the
+The upstream `ci-router/benchmark` free public GitHub baseline has six-hour
+sampling targets at 00:23, 06:23, 12:23 and 18:23 UTC. This fork does not run
+that schedule. GitHub may delay or skip scheduled workflows, and the
 workflow's global concurrency group can drop a pending pass when a newer one
 queues; these times are sampling targets, not availability guarantees. The
-schedule is enabled for this public repository on `main`; forks do not run it.
+schedule is enabled only for the upstream repository on `main`; this fork
+skips scheduled planning.
 Manual dispatch remains available.
 
 `schedule.json` is an explicit external-program enrollment: `program` is
@@ -362,18 +365,23 @@ baseline planning. Changes to the workload set or the enrolled baseline's runner
 label, image or size fail closed until reviewed. The baseline is pinned to
 `ubuntu-24.04`, 4 vCPUs and 16 GB; paid routes are rejected by the schedule entirely.
 
-The owner-approved operational allocation is $10/day combined ($2 external /
-$8 internal). This external schedule reserves $0/day. The $1 Depot allocation
-remains retained and the remaining $1 external headroom is reserved for one Boat
-small pilot. Together these consume the $2 external allocation; they are
-operational holds, not refunds or actual invoices. No paid schedule and no
-paid retry are authorized by this change. Scheduled reruns are skipped; a
-replacement sample needs a fresh explicit allocation and is not automatic.
+The current owner-approved operational allocation is $10/day combined
+($3 external / $7 internal). As of 2026-11-10, all $3 external is held by one
+Depot, one Boat and one Ubicloud attempt with charges unreconciled. These are
+operational holds, not refunds or actual invoices. Do not dispatch a paid Tenki
+job today while those holds exhaust the allocation. Confirmed external headroom
+is required before dispatch under standing owner authority, after reconciliation
+or a UTC-day rollover. No new approval question is introduced by this source
+preparation. No paid schedule or automatic retry is authorized.
+Scheduled reruns are skipped; a replacement sample needs a fresh explicit
+allocation and is not automatic. The existing cron is guarded to the upstream
+`ci-router/benchmark` repository on `main`, so a fork scheduled plan is skipped;
+this fork adds no paid cron.
 
 The workflow runs at most one matrix job at a time with a 15-minute timeout and
 serializes benchmark workflows without cancelling running samples. It keeps the
-existing immutable raw results and collector. At four successful passes per day
-a workload reaches 20 samples in five days and 40 in ten; missing, skipped and
+existing immutable raw results and collector. For upstream recurring sampling,
+four successful passes per day mean a workload reaches 20 samples in five days and 40 in ten; missing, skipped and
 failed runs can extend that. Existing scoring thresholds still apply. Scheduling
 does not establish comparative performance, adequate coverage or routing
 integration.

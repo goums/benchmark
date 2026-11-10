@@ -68,14 +68,15 @@ test('selectRoutes: default is only the free baseline; explicit selection cannot
   for (const bad of ['A', 'a b', '$(id)', 'a;b', '-a']) assert.throws(() => selectRoutes(routes, bad), /route id/, bad);
 });
 
-test('the Depot route is declared with its own label and 2 vCPU / 8 GB', () => {
+test('the Depot route is declared with its own label and 2 vCPU / 8 GB but disabled in the fork', () => {
   const routes = readRoutes(join(root, 'routes.json'));
   const depot = routes.find((r) => r.id === 'depot-ubuntu-2vcpu');
   assert.ok(depot);
   assert.equal(depot.runsOn, 'depot-ubuntu-24.04');
   assert.equal(depot.vcpu, 2);
   assert.equal(depot.memoryGb, 8);
-  assert.equal(selectRoutes(routes, 'depot-ubuntu-2vcpu')[0].id, depot.id);
+  assert.equal(depot.enabled, false);
+  assert.throws(() => selectRoutes(routes, depot.id), /disabled/);
 });
 
 test('the Boat routes are declared with their own labels and sizes', () => {
@@ -90,13 +91,21 @@ test('the Boat routes are declared with their own labels and sizes', () => {
   assert.ok(!four.archiveLogs && !two.archiveLogs);
 });
 
-test('unqualified hosted routes remain disabled, including the documented Tenki configuration', () => {
+test('the fork enables exactly GitHub and Tenki with the reviewed Tenki shape', () => {
   const routes = readRoutes(join(root, 'routes.json'));
-  assert.deepEqual(routes.filter((r) => r.enabled).map((r) => r.id), ['github-hosted-4vcpu', 'depot-ubuntu-2vcpu', 'boat-2vcpu']);
+  assert.deepEqual(routes.filter((r) => r.enabled).map((r) => r.id), ['github-hosted-4vcpu', 'tenki-hosted-4vcpu']);
   const tenki = routes.find((r) => r.id === 'tenki-hosted-4vcpu');
   assert.equal(tenki.runsOn, 'tenki-standard-medium-4c-8g');
   assert.equal(tenki.vcpu, 4);
   assert.equal(tenki.memoryGb, 8);
+  assert.equal(tenki.image, 'ubuntu-24.04');
+  assert.equal(tenki.enabled, true);
+  const raw = JSON.parse(readFileSync(join(root, 'routes.json'), 'utf8')).routes.find((r) => r.id === tenki.id);
+  assert.deepEqual(raw.settings, { transparentCache: null, stickyDisk: null });
+  assert.equal(raw.archiveLogs, false);
+  const selected = selectRoutes(routes, tenki.id);
+  const workloads = selectWorkloads(selected, listWorkloads(join(root, 'workloads')), 'node-typescript', 1);
+  assert.equal(buildMatrix(selected, workloads, 1).include.length, 1);
   for (const route of routes.filter((r) => !r.enabled)) {
     assert.throws(() => selectRoutes(routes, route.id), /disabled/);
   }
