@@ -366,13 +366,14 @@ label, image or size fail closed until reviewed. The baseline is pinned to
 `ubuntu-24.04`, 4 vCPUs and 16 GB; paid routes are rejected by the schedule entirely.
 
 The current owner-approved operational allocation is $10/day combined
-($3 external / $7 internal). As of 2026-11-10, all $3 external is held by one
-Depot, one Boat and one Ubicloud attempt with charges unreconciled. These are
-operational holds, not refunds or actual invoices. Do not dispatch a paid Tenki
-job today while those holds exhaust the allocation. Confirmed external headroom
-is required before dispatch under standing owner authority, after reconciliation
-or a UTC-day rollover. No new approval question is introduced by this source
-preparation. No paid schedule or automatic retry is authorized.
+($4 external / $6 internal). As of 2026-11-10, the Depot, Boat and Ubicloud
+attempts retain $1 each with charges unreconciled; one additional $1 is reserved
+for this single Tenki native Node attempt. The old refused internal attempt
+retains its $1 hold within the internal share. These are operational holds,
+not refunds or actual invoices. Source review and merge, workflow activation,
+and completion of the current free GitHub baseline run precede dispatch under
+standing owner authority. No new approval question is introduced by this source
+preparation. No paid schedule, fallback dispatch or automatic retry is authorized.
 Scheduled reruns are skipped; a replacement sample needs a fresh explicit
 allocation and is not automatic. The existing cron is guarded to the upstream
 `ci-router/benchmark` repository on `main`, so a fork scheduled plan is skipped;

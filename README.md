@@ -43,12 +43,14 @@ settings change, secret change or ruleset bypass is part of this source pilot.
 
 ## Run only with confirmed budget headroom
 
-As of 2026-11-10, the $10 combined daily allocation is $3 external / $7 internal.
-All external headroom is held by one Depot, one Boat and one Ubicloud attempt,
-with charges unreconciled. Do not dispatch a paid Tenki job today while those
-holds exhaust the allocation. Holds are operational reservations, not observed
-invoices or refunds. Standing owner authority covers the normal bounded pilot
-once external headroom is confirmed after reconciliation or UTC-day rollover.
+As of 2026-11-10, the $10 combined daily allocation is $4 external / $6 internal.
+The Depot, Boat and Ubicloud attempts retain $1 each with charges unreconciled;
+one additional $1 is reserved for this single Tenki native Node attempt. The
+old refused internal attempt also retains its $1 hold within the internal share.
+Holds are operational reservations, not observed invoices or refunds. Standing
+owner authority covers this bounded attempt after source review and merge,
+workflow activation, and completion of the current free GitHub baseline run.
+No retry, fallback dispatch or subscription purchase is authorized.
 
 After independent review and merge to this fork's `main`, and with confirmed
 headroom, the intended single command is:
