@@ -1,0 +1,305 @@
+{
+  "total_count": 3,
+  "jobs": [
+    {
+      "id": 134241927168,
+      "run_id": 44140574152,
+      "workflow_name": "benchmark",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/goums/benchmark/actions/runs/44140574152",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVngkFM8AAAAfQXFAAA",
+      "head_sha": "e540bcd47a102aa847c0dd54339b3ee243ca679f",
+      "url": "https://api.github.com/repos/goums/benchmark/actions/jobs/134241927168",
+      "html_url": "https://github.com/goums/benchmark/actions/runs/44140574152/job/134241927168",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-17T17:46:04Z",
+      "started_at": "2026-11-17T17:46:07Z",
+      "completed_at": "2026-11-17T17:46:12Z",
+      "name": "plan",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T17:46:07Z",
+          "completed_at": "2026-11-17T17:46:08Z"
+        },
+        {
+          "name": "checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T17:46:08Z",
+          "completed_at": "2026-11-17T17:46:09Z"
+        },
+        {
+          "name": "node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T17:46:09Z",
+          "completed_at": "2026-11-17T17:46:09Z"
+        },
+        {
+          "name": "validate benchmark scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T17:46:09Z",
+          "completed_at": "2026-11-17T17:46:10Z"
+        },
+        {
+          "name": "matrix",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T17:46:10Z",
+          "completed_at": "2026-11-17T17:46:10Z"
+        },
+        {
+          "name": "Post node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-17T17:46:10Z",
+          "completed_at": "2026-11-17T17:46:10Z"
+        },
+        {
+          "name": "Post checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-17T17:46:10Z",
+          "completed_at": "2026-11-17T17:46:11Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-17T17:46:11Z",
+          "completed_at": "2026-11-17T17:46:11Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/goums/benchmark/check-runs/134241927168",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000000097,
+      "runner_name": "GitHub Actions 1000000097",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 134242016321,
+      "run_id": 44140574152,
+      "workflow_name": "benchmark",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/goums/benchmark/actions/runs/44140574152",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVngkFM8AAAAfQXKcQQ",
+      "head_sha": "e540bcd47a102aa847c0dd54339b3ee243ca679f",
+      "url": "https://api.github.com/repos/goums/benchmark/actions/jobs/134242016321",
+      "html_url": "https://github.com/goums/benchmark/actions/runs/44140574152/job/134242016321",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-11-17T17:46:13Z",
+      "started_at": "2026-11-17T17:46:24Z",
+      "completed_at": "2026-11-17T17:48:11Z",
+      "name": "run tenki-hosted-4vcpu node-typescript 1",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T17:46:24Z",
+          "completed_at": "2026-11-17T17:46:25Z"
+        },
+        {
+          "name": "Set up runner",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T17:46:25Z",
+          "completed_at": "2026-11-17T17:46:25Z"
+        },
+        {
+          "name": "checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T17:46:25Z",
+          "completed_at": "2026-11-17T17:46:25Z"
+        },
+        {
+          "name": "fingerprint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T17:46:25Z",
+          "completed_at": "2026-11-17T17:46:26Z"
+        },
+        {
+          "name": "setup",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T17:46:26Z",
+          "completed_at": "2026-11-17T17:46:43Z"
+        },
+        {
+          "name": "work",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 6,
+          "started_at": "2026-11-17T17:46:43Z",
+          "completed_at": "2026-11-17T17:48:06Z"
+        },
+        {
+          "name": "upload fingerprint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-17T17:48:06Z",
+          "completed_at": "2026-11-17T17:48:08Z"
+        },
+        {
+          "name": "Post checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-17T17:48:08Z",
+          "completed_at": "2026-11-17T17:48:08Z"
+        },
+        {
+          "name": "Complete runner",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-17T17:48:08Z",
+          "completed_at": "2026-11-17T17:48:08Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-17T17:48:08Z",
+          "completed_at": "2026-11-17T17:48:08Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/goums/benchmark/check-runs/134242016321",
+      "labels": [
+        "tenki-standard-medium-4c-8g"
+      ],
+      "runner_id": 27,
+      "runner_name": "tenki-sandbox-68551bfc-9790-4770-8427-131947f2db4d",
+      "runner_group_id": 1,
+      "runner_group_name": "Default"
+    },
+    {
+      "id": 134243276094,
+      "run_id": 44140574152,
+      "workflow_name": "benchmark",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/goums/benchmark/actions/runs/44140574152",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVngkFM8AAAAfQYXVPg",
+      "head_sha": "e540bcd47a102aa847c0dd54339b3ee243ca679f",
+      "url": "https://api.github.com/repos/goums/benchmark/actions/jobs/134243276094",
+      "html_url": "https://github.com/goums/benchmark/actions/runs/44140574152/job/134243276094",
+      "status": "in_progress",
+      "conclusion": null,
+      "created_at": "2026-11-17T17:48:11Z",
+      "started_at": "2026-11-17T17:48:13Z",
+      "completed_at": null,
+      "name": "collect",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-17T17:48:13Z",
+          "completed_at": "2026-11-17T17:48:14Z"
+        },
+        {
+          "name": "checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-17T17:48:14Z",
+          "completed_at": "2026-11-17T17:48:16Z"
+        },
+        {
+          "name": "node",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-17T17:48:16Z",
+          "completed_at": "2026-11-17T17:48:16Z"
+        },
+        {
+          "name": "download fingerprints",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-17T17:48:16Z",
+          "completed_at": "2026-11-17T17:48:17Z"
+        },
+        {
+          "name": "collect",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-17T17:48:17Z",
+          "completed_at": "2026-11-17T17:48:18Z"
+        },
+        {
+          "name": "archive raw data",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 6,
+          "started_at": "2026-11-17T17:48:18Z",
+          "completed_at": null
+        },
+        {
+          "name": "publish to the results branch",
+          "status": "pending",
+          "conclusion": null,
+          "number": 7,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post node",
+          "status": "pending",
+          "conclusion": null,
+          "number": 13,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post checkout",
+          "status": "pending",
+          "conclusion": null,
+          "number": 14,
+          "started_at": null,
+          "completed_at": null
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/goums/benchmark/check-runs/134243276094",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000000098,
+      "runner_name": "GitHub Actions 1000000098",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}
