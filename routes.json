@@ -70,9 +70,10 @@
       "note": "Disabled in goums/benchmark. Upstream and other forks' native access and historical runs do not establish access or measurements for this repository. A separate reviewed allocation is required before enabling this route."
     },
     {
-      "id": "tenki-hosted-4vcpu",
-      "provider": "tenki",
-      "runsOn": "tenki-standard-medium-4c-8g",
+      "id": "luxor-hosted-4vcpu",
+      "formerIds": ["tenki-hosted-4vcpu"],
+      "provider": "luxor",
+      "runsOn": "luxor-ubuntu-medium-4c-8g",
       "vcpu": 4,
       "memoryGb": 8,
       "image": "ubuntu-24.04",
@@ -83,7 +84,7 @@
         "transparentCache": null,
         "stickyDisk": null
       },
-      "note": "Prepared native external pilot for public goums/benchmark only. Owner confirms Tenki is installed on this repository; installation does not prove hosted-runner admission or size eligibility. Sandbox API access is not hosted-runner access. Select one explicit workload and one repetition under standing owner authority only after confirmed external budget headroom. No dispatch while current holds exhaust the allocation. Label tenki-standard-medium-4c-8g, 4 vCPU/8 GB, Ubuntu 24.04 come from the reviewed upstream runner documentation. transparentCache and stickyDisk remain null (unknown); actual CPU, OS and resources require the job fingerprint before interpreting results. Charges and settings are unknown. No plan purchase, account-setting change, retry, paid schedule or hard billing cutoff is established here."
+      "note": "Prepared native external pilot for public goums/benchmark only. Owner confirms Luxor is installed on this repository; installation does not prove hosted-runner admission or size eligibility. Sandbox API access is not hosted-runner access. Select one explicit workload and one repetition under standing owner authority only after confirmed external budget headroom. No dispatch while current holds exhaust the allocation. Label luxor-ubuntu-medium-4c-8g, 4 vCPU/8 GB, Ubuntu 24.04 come from the reviewed upstream runner documentation. transparentCache and stickyDisk remain null (unknown); actual CPU, OS and resources require the job fingerprint before interpreting results. Charges and settings are unknown. No plan purchase, account-setting change, retry, paid schedule or hard billing cutoff is established here."
     }
   ]
 }

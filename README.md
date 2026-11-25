@@ -1,6 +1,6 @@
 # CI runner benchmark — goums fork
 
-This public `goums/benchmark` fork prepares one bounded native Tenki GitHub
+This public `goums/benchmark` fork prepares one bounded native Luxor GitHub
 Actions runner sample alongside the free GitHub-hosted baseline.
 
 ## Provenance
@@ -20,19 +20,19 @@ Actions runner sample alongside the free GitHub-hosted baseline.
 
 ## Status
 
-**Prepared source, not executed.** No Tenki measurement, comparison, score or
+**Prepared source, not executed.** No Luxor measurement, comparison, score or
 ranking exists from this fork. Exactly two routes are enabled:
 
 | Route | Label | Size | Image |
 | --- | --- | --- | --- |
 | `github-hosted-4vcpu` | `ubuntu-24.04` | 4 vCPU / 16 GB | Ubuntu 24.04 |
-| `tenki-hosted-4vcpu` | `tenki-standard-medium-4c-8g` | 4 vCPU / 8 GB | Ubuntu 24.04 |
+| `luxor-hosted-4vcpu` | `luxor-ubuntu-medium-4c-8g` | 4 vCPU / 8 GB | Ubuntu 24.04 |
 
-The Tenki label and advertised shape come from the reviewed upstream route.
-Tenki has half the memory of the public GitHub baseline. All Depot, Boat and
+The Luxor label and advertised shape come from the reviewed upstream route.
+Luxor has half the memory of the public GitHub baseline. All Depot, Boat and
 Ubicloud routes remain disabled.
 
-The owner confirms Tenki is installed on `goums/benchmark`. Installation and
+The owner confirms Luxor is installed on `goums/benchmark`. Installation and
 repository admin access do not prove hosted-runner admission or size eligibility;
 a normal native job establishes that. A PAT installations-list 403 does not
 prove absence, and a sandbox API key does not prove hosted-runner access.
@@ -45,7 +45,7 @@ settings change, secret change or ruleset bypass is part of this source pilot.
 
 As of 2026-11-10, the $10 combined daily allocation is $4 external / $6 internal.
 The Depot, Boat and Ubicloud attempts retain $1 each with charges unreconciled;
-one additional $1 is reserved for this single Tenki native Node attempt. The
+one additional $1 is reserved for this single Luxor native Node attempt. The
 old refused internal attempt also retains its $1 hold within the internal share.
 Holds are operational reservations, not observed invoices or refunds. Standing
 owner authority covers this bounded attempt after source review and merge,
@@ -59,7 +59,7 @@ headroom, the intended single command is:
 gh workflow run benchmark.yml \
   --repo goums/benchmark \
   --ref main \
-  -f route=tenki-hosted-4vcpu \
+  -f route=luxor-hosted-4vcpu \
   -f workload=node-typescript \
   -f repeats=1
 ```
@@ -73,14 +73,14 @@ charges until terminal reconciliation. This source preparation dispatches no job
 The default manual dispatch remains the free GitHub baseline. The existing
 six-hour cron is guarded to upstream `ci-router/benchmark` on `main`; fork
 scheduled planning is skipped. `schedule.json` enrolls only the free baseline.
-Enabling Tenki does not add a paid cron.
+Enabling Luxor does not add a paid cron.
 
 ## Collection and checks
 
 The existing fingerprint collector records CPU, resources, OS and kernel without
 printing the environment. On `main`, collection appends immutable rows under
 `results/<suite>/` and raw jobs-API data to this fork's `results` branch. Only the
-GitHub baseline opts into raw log archiving; Tenki logs are not archived.
+GitHub baseline opts into raw log archiving; Luxor logs are not archived.
 Unknown settings, price and absent samples remain unknown. External native
 samples do not qualify an internal CI Router route or feed placement scores.
 

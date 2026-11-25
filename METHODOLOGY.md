@@ -3,7 +3,7 @@
 Suite version: see `suite.json`. Scores are only compared within one suite
 version. A change to any pin, toolchain or script makes a new one.
 
-Status: fork preparation for one bounded native Tenki 4-vCPU/8-GB sample alongside the
+Status: fork preparation for one bounded native Luxor 4-vCPU/8-GB sample alongside the
 GitHub-hosted 4-vCPU/16-GB baseline. No fork measurement exists yet. Two workloads are
 available; a paid dispatch selects exactly one.
 
@@ -142,18 +142,18 @@ A route is one way of getting a runner:
   are compared at 4 vCPUs. Smaller and larger sizes are published as raw numbers
   and are not scored.
 - **Providers with their own GitHub Actions integration**, using their own
-  labels. In public `goums/benchmark`, only `tenki-hosted-4vcpu` is enabled:
-  `tenki-standard-medium-4c-8g`, 4 vCPU / 8 GB, Ubuntu 24.04. This has half
+  labels. In public `goums/benchmark`, only `luxor-hosted-4vcpu` is enabled:
+  `luxor-ubuntu-medium-4c-8g`, 4 vCPU / 8 GB, Ubuntu 24.04. This has half
   the memory of the public GitHub 4-vCPU baseline. The actual CPU, OS and
   resources require the job fingerprint before interpreting a result.
-  The owner confirms the Tenki installation on this repository. A normal job
+  The owner confirms the Luxor installation on this repository. A normal job
   must still establish hosted-runner admission and size eligibility; neither a
   PAT installations-list 403 nor sandbox API access establishes that access.
   `transparentCache` and `stickyDisk` remain `null` (unknown). Do not force
   account settings to fill them in. Charges remain unknown; a timeout is not
   a hard billing cutoff. No subscription or plan purchase is authorized.
   All Depot, Boat and Ubicloud routes are disabled in this fork. Their upstream
-  or other-fork access and runs are not `goums/benchmark` measurements. Tenki
+  or other-fork access and runs are not `goums/benchmark` measurements. Luxor
   job logs are not archived.
 - **Router routes.** These come later. A router route can only be started from a
   manual or scheduled run on the default branch: the router refuses to place
@@ -336,7 +336,7 @@ cell whose coefficient of variation is above 15% is flagged as unstable.
 1. **Upstream baseline:** historical `ci-router/benchmark` GitHub-hosted
    measurements established the harness and repeated-run variation. They are
    not `goums/benchmark` measurements.
-2. **Native provider pilot (current fork preparation):** one Tenki 4-vCPU
+2. **Native provider pilot (current fork preparation):** one Luxor 4-vCPU
    route is enabled for an explicit one-workload, one-repeat job once external
    headroom is confirmed under standing owner authorization. Depot, Boat,
    Ubicloud and other native routes remain disabled in this fork. No fork measurement exists yet.
@@ -368,7 +368,7 @@ label, image or size fail closed until reviewed. The baseline is pinned to
 The current owner-approved operational allocation is $10/day combined
 ($4 external / $6 internal). As of 2026-11-10, the Depot, Boat and Ubicloud
 attempts retain $1 each with charges unreconciled; one additional $1 is reserved
-for this single Tenki native Node attempt. The old refused internal attempt
+for this single Luxor native Node attempt. The old refused internal attempt
 retains its $1 hold within the internal share. These are operational holds,
 not refunds or actual invoices. Source review and merge, workflow activation,
 and completion of the current free GitHub baseline run precede dispatch under

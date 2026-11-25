@@ -91,19 +91,19 @@ test('the Boat routes are declared with their own labels and sizes', () => {
   assert.ok(!four.archiveLogs && !two.archiveLogs);
 });
 
-test('the fork enables exactly GitHub and Tenki with the reviewed Tenki shape', () => {
+test('the fork enables exactly GitHub and Luxor with the reviewed Luxor shape', () => {
   const routes = readRoutes(join(root, 'routes.json'));
-  assert.deepEqual(routes.filter((r) => r.enabled).map((r) => r.id), ['github-hosted-4vcpu', 'tenki-hosted-4vcpu']);
-  const tenki = routes.find((r) => r.id === 'tenki-hosted-4vcpu');
-  assert.equal(tenki.runsOn, 'tenki-standard-medium-4c-8g');
-  assert.equal(tenki.vcpu, 4);
-  assert.equal(tenki.memoryGb, 8);
-  assert.equal(tenki.image, 'ubuntu-24.04');
-  assert.equal(tenki.enabled, true);
-  const raw = JSON.parse(readFileSync(join(root, 'routes.json'), 'utf8')).routes.find((r) => r.id === tenki.id);
+  assert.deepEqual(routes.filter((r) => r.enabled).map((r) => r.id), ['github-hosted-4vcpu', 'luxor-hosted-4vcpu']);
+  const luxor = routes.find((r) => r.id === 'luxor-hosted-4vcpu');
+  assert.equal(luxor.runsOn, 'luxor-ubuntu-medium-4c-8g');
+  assert.equal(luxor.vcpu, 4);
+  assert.equal(luxor.memoryGb, 8);
+  assert.equal(luxor.image, 'ubuntu-24.04');
+  assert.equal(luxor.enabled, true);
+  const raw = JSON.parse(readFileSync(join(root, 'routes.json'), 'utf8')).routes.find((r) => r.id === luxor.id);
   assert.deepEqual(raw.settings, { transparentCache: null, stickyDisk: null });
   assert.equal(raw.archiveLogs, false);
-  const selected = selectRoutes(routes, tenki.id);
+  const selected = selectRoutes(routes, luxor.id);
   const workloads = selectWorkloads(selected, listWorkloads(join(root, 'workloads')), 'node-typescript', 1);
   assert.equal(buildMatrix(selected, workloads, 1).include.length, 1);
   for (const route of routes.filter((r) => !r.enabled)) {
